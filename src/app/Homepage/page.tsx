@@ -1,11 +1,12 @@
+'use client'
 import React from 'react'
+import Navbar from '../components/Navbar'
 
-const Homepage = () => {
+export default function Homepage() {
   return (
-    <div className='text-black'>
-      Homepage
+    <div>
+      <Navbar/>
     </div>
   )
 }
 
-export default Homepage
