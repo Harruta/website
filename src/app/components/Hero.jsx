@@ -12,7 +12,7 @@ const Hero = () => {
 
       {/* Smaller Description */}
       <p className="text-lg text-muted-foreground dark:text-gray-300 mb-4">
-        A self-taught developer who loves making things.
+        A self-taught developer who loves making things. I have always been passionate about making things<br />be art, music, YouTube videos, apps and will always be.
       </p>
 
       {/* Social Icons */}

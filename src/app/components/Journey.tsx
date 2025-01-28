@@ -9,7 +9,7 @@ const Journey = () => {
     { year: '2022', description: 'Got bored of hacking and development and explored different paths (biggest mistake).' },
     { year: '2023', description: 'Ended up choosing a useless degree to pursue.<br/>(I did not choose CS because of the AI hype; I was too scared that AI would make coding obsolete).' },
     { year: '2024', description: 'Started getting back into coding.' },
-    { year: '2025', description: 'First 6 months </br> Focusing on dev and DSA/CP,want to be very good at it. </br>later half </br> will be geting inot AI/ML' },
+    { year: '2025', description: 'First 6 months : </br> Focusing on dev and DSA/CP,want to be very good at it. </br>later half : </br> will be geting inot AI/ML' },
     { year: '2026', description: 'Will graduade. Next aiming to do a MS in CS while working remote jobs' },
   ];
 
