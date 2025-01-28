@@ -1,17 +1,17 @@
-import React from 'react'
-import Link from 'next/link'
-import { monoFont } from '../styles/fonts/fonts'
+import React from 'react';
+import Link from 'next/link';
+import { monoFont } from '../styles/fonts/fonts';
 
 const Navbar: React.FC = () => {
     const navItems = [
         { href: '#projects', label: 'Projects' },
         { href: '#blogs', label: 'Blogs' },
         { href: '#notes', label: 'Notes' }
-    ]
+    ];
 
     return (
         <nav className={`${monoFont.className} relative z-50 p-4`}>
-            <div className="flex items-center gap-6">
+            <div className="flex justify-end items-center gap-12"> {/* Adjust alignment */}
                 {navItems.map((item) => (
                     <Link
                         key={item.href}
@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
                 ))}
             </div>
         </nav>
-    )
-}
+    );
+};
 
-export default Navbar
+export default Navbar;
