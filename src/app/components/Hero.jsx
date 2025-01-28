@@ -1,5 +1,6 @@
-import React from 'react'
-import { monoFont } from '../styles/fonts/fonts'
+import React from 'react';
+import { monoFont } from '../styles/fonts/fonts';
+import { Mail, Twitter, Github, Code } from 'lucide-react'; // Icon imports
 
 const Hero = () => {
   return (
@@ -10,11 +11,27 @@ const Hero = () => {
       </h1>
 
       {/* Smaller Description */}
-      <p className="text-lg text-muted-foreground dark:text-gray-300">
-        A passionate developer exploring the world of code and design.
+      <p className="text-lg text-muted-foreground dark:text-gray-300 mb-4">
+        A self-taught developer who loves making things.
       </p>
-    </div>
-  )
-}
 
-export default Hero
+      {/* Social Icons */}
+      <div className="flex space-x-4">
+        <a href="https://x.com/mellontoaster" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-blue-500">
+          <Twitter size={24} />
+        </a>
+        <a href="mailto:your-ka46774336@gmail.com" className="text-gray-600 dark:text-gray-400 hover:text-red-500">
+          <Mail size={24} />
+        </a>
+        <a href="https://github.com/Harruta" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-black">
+          <Github size={24} />
+        </a>
+        <a href="https://leetcode.com/u/Harruta/" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-500">
+          <Code size={24} />
+        </a>
+      </div>
+    </div>
+  );
+};
+
+export default Hero;
