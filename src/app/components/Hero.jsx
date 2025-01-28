@@ -1,6 +1,6 @@
 import React from 'react';
 import { monoFont } from '../styles/fonts/fonts';
-import { Mail, Twitter, Github, Code } from 'lucide-react'; 
+import { Mail, Twitter, Github, Code, Youtube } from 'lucide-react'; 
 
 const Hero = () => {
   return (
@@ -12,22 +12,25 @@ const Hero = () => {
 
       {/* Smaller Description */}
       <p className="text-lg text-muted-foreground dark:text-gray-300 mb-4">
-        A self-taught developer who loves making things. I have always been passionate about making things<br />be art, music, YouTube videos, apps and will always be.
+        A self-taught developer who loves making things. I have always been 
+        <br/> passionate about making things be art, music, YouTube videos, apps 
+        <br/> 
+        and will always be.
       </p>
 
       {/* Social Icons */}
       <div className="flex space-x-4">
         <a href="https://x.com/mellontoaster" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-blue-500">
-          <Twitter size={24} />
+          <Twitter size={20} />
         </a>
         <a href="mailto:your-ka46774336@gmail.com" className="text-gray-600 dark:text-gray-400 hover:text-red-500">
-          <Mail size={24} />
+          <Mail size={20} />
         </a>
         <a href="https://github.com/Harruta" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-black">
-          <Github size={24} />
+          <Github size={20} />
         </a>
         <a href="https://leetcode.com/u/Harruta/" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-500">
-          <Code size={24} />
+          <Code size={20} />
         </a>
       </div>
     </div>
