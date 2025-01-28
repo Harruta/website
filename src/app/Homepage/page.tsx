@@ -3,6 +3,7 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import { ModeToggle } from '../components/ui/ModeToggle'
 import Hero from '../components/Hero'
+import Journey from '../components/Journey'
 
 export default function Homepage() {
   return (
@@ -14,8 +15,9 @@ export default function Homepage() {
       </div>
 
       {/* Hero Section */}
-      <div className='flex justify-start items-center mt-20 pl-5'> 
+      <div className='justify-start items-center mt-20 pl-5  space-y-10'> 
         <Hero />
+        <Journey/>
       </div>
     </div>
   )

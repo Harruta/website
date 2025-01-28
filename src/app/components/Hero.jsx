@@ -1,6 +1,6 @@
 import React from 'react';
 import { monoFont } from '../styles/fonts/fonts';
-import { Mail, Twitter, Github, Code } from 'lucide-react'; // Icon imports
+import { Mail, Twitter, Github, Code } from 'lucide-react'; 
 
 const Hero = () => {
   return (
