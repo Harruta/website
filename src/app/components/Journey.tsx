@@ -1,4 +1,6 @@
 import React from 'react';
+import { cn } from '@/lib/utils';
+import { monoFont } from '../styles/fonts/fonts';
 
 const Journey = () => {
   const milestones = [
@@ -9,16 +11,18 @@ const Journey = () => {
     { year: '2020', description: 'Got bored of hacking/development. explored different paths (biggest mistake).' },
     { year: '2021', description: 'Was on a different path completely forgot about coding.' },
     { year: '2022', description: 'passed 12th and took a gap year to prepare for studying abroad (got rejected).' },
-    { year: '2023', description: 'Ended up choosing a useless degree to pursue.<br/>(I did not choose CS because of the AI hype; I was too scared that AI would make coding obsolete).' },
+    { year: '2023', description: 'Ended up choosing a useless degree to pursue.<br/>(I did not choose CS because of the AI hype; I was too scared that AI would <br/>make coding obsolete).' },
     { year: '2024', description: 'Started getting back into coding.' },
     { year: '2025', description: 'First 6 months : </br> Focusing on dev and DSA/CP,want to be very good at it. </br>later half : </br> will be geting into AI/ML' },
     { year: '2026', description: 'Will graduade. Next aiming to do a MS in CS while working a remote job' },
   ];
 
   return (
-    <div className="p-4 rounded-xl shadow-md">
+    
+      <div className={cn("p-4 rounded-xl shadow-md", monoFont.className)}>
+
       <h2 className="text-xl font-bold mb-4">My Journey</h2>
-      <ul className="mt-4 space-y-4">
+      <ul className="">
         {milestones.map((milestone, index) => (
           <li
             key={index}
@@ -29,7 +33,7 @@ const Journey = () => {
           </li>
         ))}
       </ul>
-    </div>
+      </div>
   );
 };
 
