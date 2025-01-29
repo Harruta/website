@@ -1,11 +1,10 @@
 import { cn } from "@/lib/utils";
 
 interface FooterDividerProps {
-    color?: string;
     vertical?: boolean;
 }
 
-export function FooterDivider({ color = 'purple', vertical = true }: FooterDividerProps) {
+export function FooterDivider({vertical = true }: FooterDividerProps) {
     return (
         <div 
             className={cn(

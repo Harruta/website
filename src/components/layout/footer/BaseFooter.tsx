@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 import { monoFont } from '@/app/styles/fonts/fonts'
-import { Github, Twitter, Mail } from 'lucide-react'
+import { Github, Twitter, Mail, Code } from 'lucide-react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
@@ -16,8 +16,7 @@ interface BaseFooterProps {
     showCopyright?: boolean;
 }
 
-export function BaseFooter({ 
-    color = 'purple', 
+export function BaseFooter({  
     navigationLinks, 
     className,
     showToTop = true,
@@ -28,7 +27,8 @@ export function BaseFooter({
     const socialLinks = [
         { href: "mailto:ka46774336@gmail.com", icon: <Mail className="w-3 h-3 sm:w-4 sm:h-4" /> },
         { href: "https://github.com/Harruta", icon: <Github className="w-3 h-3 sm:w-4 sm:h-4" /> },
-        { href: "https://x.com/mellontoaster", icon: <Twitter className="w-3 h-3 sm:w-4 sm:h-4" /> }
+        { href: "https://x.com/mellontoaster", icon: <Twitter className="w-3 h-3 sm:w-4 sm:h-4" /> },
+        { href: "https://leetcode.com/u/Harruta/", icon: <Code className="w-3 h-3 sm:w-4 sm:h-4" /> }
     ]
 
     return (
