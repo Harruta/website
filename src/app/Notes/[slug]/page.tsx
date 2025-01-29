@@ -1,37 +1,65 @@
-import fs from 'fs';
-import path from 'path';
-import { Note } from '@/app/types/note';
+import { notFound } from 'next/navigation'
+import { notes } from '../_data/posts'
 
-interface Params {
-  slug: string;
-}
+type Params = Promise<{ slug: string }>
 
+// Generate static params for all reference pages
 export async function generateStaticParams() {
-  const notesDir = path.join(process.cwd(), 'notes');
-  const files = fs.readdirSync(notesDir);
-  return files.map(file => ({ slug: file.replace(/\.md$/, '') }));
+    return notes.map((post) => ({
+        slug: post.slug,
+    }))
 }
 
-const getNoteContent = (slug: string): Note => {
-  const filePath = path.join(process.cwd(), 'notes', `${slug}.md`);
-  const content = fs.readFileSync(filePath, 'utf8');
+export async function generateMetadata({ params }: { params: Params }) {
+    const { slug } = await params
   
-  return {
-    slug,
-    title: slug,
-    content
-  };
-};
+    return {
+      title: `${notes.find(post => post.slug === slug)?.title} | sumit.ml`,
+      openGraph: {
+        title: `${notes.find(post => post.slug === slug)?.title} | sumit.ml`,
+        description: `${notes.find(post => post.slug === slug)?.description}`,
+        images: [
+          {
+            url: `/references/posts/${slug}/opengraph-image.png`,
+            width: 1200,
+            height: 630,
+            alt: `${notes.find(post => post.slug === slug)?.description}`,
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: `${notes.find(post => post.slug === slug)?.title} | sumit.ml`,
+        description: `${notes.find(post => post.slug === slug)?.description}`,
+        images: [
+          {
+            url: `/references/posts/${slug}/twitter-image.png`,
+            width: 1200,
+            height: 630,
+            alt: `${notes.find(post => post.slug === slug)?.description}`,
+          },
+        ],
+      },
+    };
+  }
+  
 
-export default function NotePage({ params }: { params: Params }) {
-  const note = getNoteContent(params.slug);
+export default async function Reference({ 
+    params 
+}: { 
+    params: Params 
+}) {
+    const { slug } = await params
+    
+    // Find the matching blog post
+    const post = notes.find(post => post.slug === slug)
+    
+    // If no matching post is found, return 404
+    if (!post) {
+        notFound()
+    }
 
-  return (
-    <div className="max-w-2xl mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">{note.title}</h1>
-      <div className="prose max-w-none">
-        <pre>{note.content}</pre>
-      </div>
-    </div>
-  );
+    // Import and render the actual blog post component
+    const PostComponent = (await import(`../${slug}/page`)).default
+    return <PostComponent />
 }

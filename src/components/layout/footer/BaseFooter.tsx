@@ -1,7 +1,7 @@
 'use client'
 
-import { cn } from '@/lib/utils/utils'
-import { monoFont } from '@/styles/fonts/fonts'
+import { cn } from '@/lib/utils'
+import { monoFont } from '@/app/styles/fonts/fonts'
 import { Github, Twitter, Mail } from 'lucide-react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'

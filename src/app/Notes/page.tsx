@@ -18,7 +18,7 @@ export default function Notes() {
                     <div className="flex items-center justify-between">
                         <DynamicBreadcrumb
                             items={[
-                                { href: "/", label: "Home", emoji: "👾" },
+                                { href: "/", label: "Home" },
                                 { label: "Notes" }
                             ]}
                         />
@@ -30,8 +30,7 @@ export default function Notes() {
                             Notes
                         </TextHeading>
                         <Text variant="muted" className="mb-8">
-                            A collection of references and notes that I have collected from my learning journey. Mostly
-                            Math and ML-related.
+                            A place where I dump all my knowlege.
                         </Text>
                     </div>
 

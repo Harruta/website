@@ -1,8 +1,8 @@
 import { StackVertical } from "@/components/layout/layout-stack/layout-stack"
 import Text from "@/components/ui/text/text"
-import TextHeading from "@/components/ui/text-heading/text-heading"
-import { DynamicBreadcrumb } from "@/components/ui/primitives/breadcrumb"
-import { ThemeToggle } from "@/components/ui/theme/theme-toggle"
+import TextHeading from "@/components/ui/text/text-heading"
+import { DynamicBreadcrumb } from "@/app/components/ui/primitives/breadcrumb"
+import { ThemeToggle } from "@/components/ui/theme/theme-toggle" 
 
 export function ReferenceHeader() {
     return (
@@ -12,7 +12,7 @@ export function ReferenceHeader() {
             <div className="flex items-center justify-between">
                 <DynamicBreadcrumb 
                     items={[
-                        { href: '/', label: 'Home', emoji: '👾' },
+                        { href: '/', label: 'Home' },
                         { label: 'Notes' }
                     ]}
                 />
@@ -24,7 +24,7 @@ export function ReferenceHeader() {
                     Notes
                 </TextHeading>
                 <Text variant="muted" size="sm">
-                    A collection of notes that I have collected from my learning journey. Mostly Math and ML-related.
+                    A place where I dump all my knowlege.
                 </Text>
             </div>
         </StackVertical>

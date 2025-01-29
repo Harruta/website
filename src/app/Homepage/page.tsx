@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import { ModeToggle } from '../components/ui/ModeToggle';
 import Hero from '../components/Hero';
 import Journey from '../components/Journey';
+import { ThemeToggle } from '@/components/ui/theme/theme-toggle';
 
 export default function Homepage() {
   return (
@@ -11,7 +12,7 @@ export default function Homepage() {
       {/* Unified container for Navbar and ModeToggle */}
       <div className="flex justify-between items-center gap-4">
         <Navbar />
-        <ModeToggle />
+        <ThemeToggle/>
       </div>
 
       {/* Hero Section */}
