@@ -1,8 +1,7 @@
-import { cn } from '@/lib/utils/utils'
+import { cn } from '@/lib/utils';
 import Text from '@/components/ui/text/text'
 import { Info, AlertTriangle, CheckCircle2, AlertCircle, Lightbulb } from 'lucide-react'
-import { monoFont } from '@/styles/fonts/fonts'
-
+import { monoFont } from '@/app/styles/fonts/fonts';
 interface CalloutProps {
     children: React.ReactNode;
     className?: string;
