@@ -4,9 +4,9 @@ import { MDXComponents } from 'mdx/types'
 import TextHeading from '@/components/ui/text/text-heading'
 import Text from '@/components/ui/text/text'
 import { List, ListItem } from '@/components/ui/list/list'
-import Ruler from '@/components/ui/ruler/ruler'
-import { cn } from '@/lib/utils/utils'
-import { monoFont } from '@/styles/fonts/fonts'
+import Ruler from '@/app/components/ui/ruler/ruler'
+import { cn } from '../utils'
+import { monoFont } from '@/app/styles/fonts/fonts'
 import CodeBlock from '@/components/blocks/code-block/code-block'
 
 export const mdxComponents: MDXComponents = {
