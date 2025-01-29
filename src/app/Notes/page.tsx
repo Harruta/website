@@ -1,42 +1,52 @@
-import fs from 'fs';
-import path from 'path';
-import Link from 'next/link';
-import { Note } from '../types/note';
+'use client'
 
-const getNotes = (): Note[] => {
-  const notesDir = path.join(process.cwd(), 'notes');
-  return fs.readdirSync(notesDir).map(file => ({
-    slug: file.replace(/\.md$/, ''),
-    title: file.replace(/\.md$/, ''),
-    content: ''
-  }));
-};
+import { StackVertical } from "@/components/layout/layout-stack/layout-stack";
+import BaseContainer from "@/components/layout/container/base-container";
+import { DynamicBreadcrumb } from "../components/ui/primitives/breadcrumb";
+import { ThemeToggle } from "@/components/ui/theme/theme-toggle";
+import { notes } from "./_data/posts";
+import { ReferenceCard } from "./_components/ReferenceCard";
+import TextHeading from "@/components/ui/text/text-heading";
+import Text from "@/components/ui/text/text";
+import { SectionFooter } from "@/components/layout/footer/SectionFooter";
 
-export default function NotesPage() {
-  const notes = getNotes();
+export default function Notes() {
+    return (
+        <>
+            <BaseContainer size="md" paddingX="md" paddingY="lg">
+                <StackVertical gap="md">
+                    <div className="flex items-center justify-between">
+                        <DynamicBreadcrumb
+                            items={[
+                                { href: "/", label: "Home", emoji: "👾" },
+                                { label: "Notes" }
+                            ]}
+                        />
+                        <ThemeToggle />
+                    </div>
 
-  return (
-    <div className="max-w-2xl mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-8">My Notes</h1>
-      <div className="space-y-4">
-        {notes.map(note => (
-          <Link 
-            key={note.slug}
-            href={`/notes/${note.slug}`}
-            className="block p-4 border rounded-lg hover:bg-gray-50 transition-colors"
-          >
-            <h2 className="text-xl font-semibold">{note.title}</h2>
-          </Link>
-        ))}
-      </div>
-      <div className="mt-8">
-        <Link
-          href="/add-note"
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-        >
-          Add New Note
-        </Link>
-      </div>
-    </div>
-  );
+                    <div>
+                        <TextHeading as="h1" weight="bold">
+                            Notes
+                        </TextHeading>
+                        <Text variant="muted" className="mb-8">
+                            A collection of references and notes that I have collected from my learning journey. Mostly
+                            Math and ML-related.
+                        </Text>
+                    </div>
+
+                    <StackVertical gap="none">
+                        {notes.map((note, index) => (
+                            <ReferenceCard 
+                                key={note.id} 
+                                post={note} 
+                                isLast={index === notes.length - 1}
+                            />
+                        ))}
+                    </StackVertical>
+                </StackVertical>
+            </BaseContainer>
+            <SectionFooter color="purple" showToTop={false} />
+        </>
+    )
 }
