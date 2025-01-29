@@ -4,7 +4,7 @@ export const notes: NotesTypes[] = [
     {
         id: 1,
         title: "DSA/CP notes",
-        description: "A collection of Algorithims for solving DSA/CP qustions.",
+        description: "A collection of Algorithims for solving DSA/CP questions.",
         lastUpdated: "January 29, 2025",
         href: "/notes/DSA/CP"
     },
