@@ -7,8 +7,7 @@ import { List, ListItem } from '@/components/ui/list/list'
 import Ruler from '@/app/components/ui/ruler/ruler'
 import { cn } from '../utils'
 import { monoFont } from '@/app/styles/fonts/fonts'
-import CodeBlock from '@/components/blocks/code-block/code-block'
-
+import CodeBlock from '@/app/components/blocks/code-block/code-block'
 export const mdxComponents: MDXComponents = {
     // Headings
     h1: ({ children }) => (
