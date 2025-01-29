@@ -24,7 +24,7 @@ export function SectionFooter({
             {showToTop && (
                 <>
                     <FooterLink href="#top" color={color}>To the Top</FooterLink>
-                    {showHomePage && <FooterDivider color={color} />}
+                    {showHomePage && <FooterDivider />}
                 </>
             )}
             {showHomePage && (
