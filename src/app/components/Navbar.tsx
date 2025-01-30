@@ -8,8 +8,8 @@ import { monoFont } from '../styles/fonts/fonts';
 const Navbar: React.FC = () => {
     
     const navItems = [
-        { href: '/projects', label: 'Projects' },
-        { href: '/blog', label: 'Blog' },
+        { href: '/Projects', label: 'Projects' },
+        { href: '/Blog', label: 'Blog' },
         { href: '/Notes', label: 'Notes' }
     ];
 
