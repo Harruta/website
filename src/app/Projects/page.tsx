@@ -5,7 +5,6 @@ import BaseContainer from "@/components/layout/container/base-container";
 import { DynamicBreadcrumb } from "../components/ui/primitives/breadcrumb";
 import { ThemeToggle } from "@/components/ui/theme/theme-toggle";
 import TextHeading from "@/components/ui/text/text-heading";
-import { ReferenceCard } from "../Notes/_components/ReferenceCard";
 import Text from "@/components/ui/text/text";
 import { SectionFooter } from "@/components/layout/footer/SectionFooter";
 
