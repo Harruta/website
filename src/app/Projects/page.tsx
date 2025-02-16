@@ -7,6 +7,7 @@ import { ThemeToggle } from "@/components/ui/theme/theme-toggle";
 import TextHeading from "@/components/ui/text/text-heading";
 import Text from "@/components/ui/text/text";
 import { SectionFooter } from "@/components/layout/footer/SectionFooter";
+import Products from "./product"
 
 export default function Projects() {
     return (
@@ -32,6 +33,7 @@ export default function Projects() {
                         </Text>
                     </div>
 
+                    <Products/>
                    
                 </StackVertical>
             </BaseContainer>
