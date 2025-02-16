@@ -6,7 +6,7 @@ interface Project {
     title: string;
     date: string;
     description: string;
-    image: any;
+    image: string;
     link: string;
     githubUrl: string;
     bulletPoints: string[]; 
