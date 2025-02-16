@@ -1,3 +1,4 @@
+import { StaticImageData } from 'next/image';
 import Image from 'next/image';
 import QC from '../content/images/QC.png';
 import { Github } from 'lucide-react';
@@ -6,9 +7,9 @@ interface Project {
     title: string;
     date: string;
     description: string;
-    image: string;
+    image?: StaticImageData;
     link: string;
-    githubUrl: string;
+    githubUrl?: string;
     bulletPoints: string[]; 
 }
 
