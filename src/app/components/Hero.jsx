@@ -26,7 +26,7 @@ const Hero = () => {
         <a href="https://github.com/Harruta" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-black">
           <Github size={20} />
         </a>
-        <a href="https://leetcode.com/u/Harruta/" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-500">
+        <a href="https://codeforces.com/profile/haruta" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-500">
           <Code size={20} />
         </a>
       </div>
