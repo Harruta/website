@@ -2,24 +2,32 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
-import Journey from '../components/Journey';
+import Projects from '../Projects/product';
 import { ThemeToggle } from '@/components/ui/theme/theme-toggle';
 import { BaseFooter } from '@/components/layout/footer/BaseFooter';
+import GitHubContributions from '../components/GitHubContributions';
 
 export default function Homepage() {
   return (
-    <div className="w-full px-4 sm:px-12 lg:px-48"> {/* Consistent padding */}
-      {/* Unified container for Navbar and ModeToggle */}
-      <div className="flex justify-between items-center gap-4">
+    <div className="w-full flex flex-col items-center px-4 sm:px-12 lg:px-48">
+      {/* Navbar and ThemeToggle in a properly aligned container */}
+      <div className="w-full max-w-7xl flex justify-between items-center py-4">
         <Navbar />
-        <ThemeToggle/>
+        <ThemeToggle />
       </div>
 
-      {/* Hero Section */}
-      <div className="flex flex-col justify-center items-center w-full max-w-7xl mx-auto mt-20 space-y-10">
+      {/* Main Content */}
+      <div className="w-full max-w-7xl flex flex-col items-center mt-20 space-y-10">
         <Hero />
-        <Journey />
-        <BaseFooter/>
+
+        <div className="w-full flex justify-center">
+          <div className="max-w-7xl overflow-hidden"> 
+            <GitHubContributions />
+          </div>
+        </div>
+        <h3>My latest work</h3>
+        <Projects/>
+        <BaseFooter />
       </div>
     </div>
   );

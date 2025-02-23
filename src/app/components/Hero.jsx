@@ -1,18 +1,24 @@
 import React from 'react';
 import { monoFont } from '../styles/fonts/fonts';
-import { Mail, Twitter, Github, Code, Youtube } from 'lucide-react'; 
+import { Mail, Twitter, Github, Code,Coffee } from 'lucide-react'; 
 
 const Hero = () => {
   return (
     <div className={`${monoFont.className}`}>
       {/* Main Heading */}
-      <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-        Hey, I am Haru!
-      </h1>
+      <div className="text-gray-900 dark:text-white mb-4">
+        <h1 className='text-2xl font-bold'>
+        Hi Anup here!
+        </h1>
+       
+        <h3>And I am here to make a difference</h3>
+      </div>
+      
 
       {/* Smaller Description */}
-      <p className="text-lg text-muted-foreground dark:text-gray-300 mb-4">
-        I love cs, math, competitive programming, ml, art and chess.
+      <p className="text-lg text-muted-foreground items-center dark:text-gray-300 mb-4">
+       I love cs, math, competitive programming, ml, art and chess. My current endevours<br/> include learning And
+       upskilling myself as much as possible.
       </p>
 
       {/* Social Icons */}
@@ -46,6 +52,14 @@ const Hero = () => {
           className="text-gray-600 dark:text-gray-400 hover:text-orange-500 transition-all duration-300 hover:-translate-y-1"
         >
           <Code size={20} />
+        </a>
+        <a 
+          href="https://buymeacoffee.com/codebyharu" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="text-gray-600 dark:text-gray-400 hover:text-orange-500 transition-all duration-300 hover:-translate-y-1"
+        >
+          <Coffee size={20} />
         </a>
       </div>
     </div>
