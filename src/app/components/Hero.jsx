@@ -8,10 +8,10 @@ const Hero = () => {
       {/* Main Heading */}
       <div className="text-gray-900 dark:text-white mb-4">
         <h1 className='text-2xl font-bold'>
-        Hi Anup here!
+        Hi, Anup here!
         </h1>
        
-        <h3>And I am here to make a difference</h3>
+        <h3>I am here to make a difference</h3>
       </div>
       
 
