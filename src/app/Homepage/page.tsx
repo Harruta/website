@@ -2,6 +2,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
+import Contact from '../components/contactForm';
 import Projects from '../Projects/product';
 import { ThemeToggle } from '@/components/ui/theme/theme-toggle';
 import { BaseFooter } from '@/components/layout/footer/BaseFooter';
@@ -27,6 +28,7 @@ export default function Homepage() {
         </div>
         <h3>My latest work</h3>
         <Projects/>
+        <Contact/>
         <BaseFooter />
       </div>
     </div>
