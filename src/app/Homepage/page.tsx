@@ -1,4 +1,5 @@
 'use client';
+import { monoFont } from '../styles/fonts/fonts';
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -26,7 +27,8 @@ export default function Homepage() {
             <GitHubContributions />
           </div>
         </div>
-        <h3>My latest work</h3>
+        <h2 className={`${monoFont.className}`}>
+          My latest work</h2>
         <Projects/>
         <Contact/>
         <BaseFooter />
