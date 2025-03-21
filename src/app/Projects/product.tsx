@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils';
 import { monoFont } from '../styles/fonts/fonts';
 import Image from 'next/image';
 import QC from '../content/images/QC.png';
+import Brain from '../content/images/Brain.png';
 import { Github } from 'lucide-react';
 
 interface Project {
@@ -30,6 +31,18 @@ const Projects = () => {
                 'A local storage mode: when enabled, it does not store messages in the database.'
             ]
         },
+        {
+            title: 'Brainly',
+            date: 'Mar 21, 2025',
+            description: "A place where one can store all their bookmarks",
+            image: Brain,
+            link: "https://brain-bay-two.vercel.app/",
+            githubUrl: 'https://github.com/Harruta/brain-frontend',
+            bulletPoints:[
+                'Users can create an account and store their bookmarks',
+            ]
+        },
+        
     ];
 
     return (
