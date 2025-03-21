@@ -6,7 +6,6 @@ import Hero from '../components/Hero';
 import Contact from '../components/contactForm';
 import CodeforcesLink from '../components/CodeForces';
 import Projects from '../Projects/product';
-import { ThemeToggle } from '@/components/ui/theme/theme-toggle';
 import { BaseFooter } from '@/components/layout/footer/BaseFooter';
 import GitHubContributions from '../components/GitHubContributions';
 
@@ -16,7 +15,6 @@ export default function Homepage() {
       {/* Navbar and ThemeToggle in a properly aligned container */}
       <div className="w-full max-w-7xl flex justify-between items-center py-4">
         <Navbar />
-        <ThemeToggle />
       </div>
 
       {/* Main Content */}

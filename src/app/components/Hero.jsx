@@ -15,8 +15,10 @@ const Hero = () => {
 
       {/* Smaller Description */}
       <p className="text-lg text-muted-foreground items-center dark:text-gray-300 mb-4">
-       I love cs, math, competitive programming, ml, art and chess. My current endevours<br/> include learning and
-       upskilling myself as much as possible.
+       I love cs, math, competitive programming, ml, art and chess.I have just started my CS joruney currently trying to master 
+       web development and competitive programming.
+
+       My dream is to have my own Startup someday
       </p>
 
       {/* Social Icons */}
