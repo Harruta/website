@@ -52,8 +52,8 @@ export default function Contact() {
         <h2 className="text-2xl font-bold mb-3">Get in Touch</h2>
         <p className="text-gray-400">
           If you have any inquiries, please feel free to reach out. You can contact me via email at <br />
-          <a href="mailto:ka46774336@gmail.com" className="text-blue-400 hover:underline">
-            ka46774336@gmail.com
+          <a href="mailto:kawkoi@proton.me" className="text-blue-400 hover:underline">
+            kawkoi@proton.me
           </a>
         </p>
       </div>

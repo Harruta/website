@@ -4,7 +4,9 @@ import { monoFont } from '../styles/fonts/fonts';
 import Image from 'next/image';
 import QC from '../content/images/QC.png';
 import Brain from '../content/images/Brain.png';
+import Jozu from '../content/images/Jozu.png';
 import { Github } from 'lucide-react';
+import Solana from '../content/images/solana.jpeg'
 
 interface Project {
     title: string;
@@ -18,6 +20,29 @@ interface Project {
 
 const Projects = () => {
     const projects: Project[] = [
+        {
+            title: 'Terminal Wallet',
+            date: 'Aug 4, 2025',
+            description: "A terminal based solana wallet made with rust",
+            image: Solana,
+            link: "https://x.com/kawkoiharu/status/1952367848380387803",
+            githubUrl: 'https://github.com/Harruta/terminal-wallet',
+            bulletPoints:[
+                'ongoing project',
+            ]
+
+        },
+        {
+            title: 'Jozu',
+            date: 'June 21, 2025',
+            description: "A gamified site for learning Japanese",
+            image: Jozu,
+            link: "https://jozu-git-main-harrutas-projects.vercel.app/",
+            githubUrl: 'https://github.com/Harruta/Jozu',
+            bulletPoints:[
+                'JLPT style tests for learning Japanese',
+            ]
+        },
         {
             title: 'QuietChat',
             date: 'Feb 15, 2025',

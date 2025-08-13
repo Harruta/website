@@ -25,9 +25,9 @@ export function BaseFooter({
     showCopyright = true
 }: BaseFooterProps) {
     const socialLinks = [
-        { href: "mailto:ka46774336@gmail.com", icon: <Mail className="w-3 h-3 sm:w-4 sm:h-4" /> },
+        { href: "mailto:kawkoi@proton.me", icon: <Mail className="w-3 h-3 sm:w-4 sm:h-4" /> },
         { href: "https://github.com/Harruta", icon: <Github className="w-3 h-3 sm:w-4 sm:h-4" /> },
-        { href: "https://x.com/mellontoaster", icon: <Twitter className="w-3 h-3 sm:w-4 sm:h-4" /> },
+        { href: "https://x.com/kawkoiharu", icon: <Twitter className="w-3 h-3 sm:w-4 sm:h-4" /> },
         { href: "https://leetcode.com/u/Harruta/", icon: <Code className="w-3 h-3 sm:w-4 sm:h-4" /> }
     ]
 
