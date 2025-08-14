@@ -23,45 +23,124 @@ const Terminal: React.FC<TerminalProps> = ({ onClose }) => {
   const [historyIndex, setHistoryIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
 
-  // Focus input when terminal mounts
+  const scrollToBottom = () => {
+    if (scrollAreaRef.current) {
+      // Force scroll to bottom immediately with multiple attempts
+      const element = scrollAreaRef.current;
+      element.scrollTop = element.scrollHeight;
+      
+      // Double-check with a small delay
+      setTimeout(() => {
+        if (scrollAreaRef.current) {
+          scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight;
+        }
+      }, 5);
+    }
+  };
+
+  // Focus input and scroll to bottom when terminal mounts
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
+    // Initial scroll to bottom
+    setTimeout(() => {
+      scrollToBottom();
+    }, 100);
   }, []);
 
   // Auto-scroll to bottom when new lines are added
   useEffect(() => {
-    if (terminalRef.current) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+    if (scrollAreaRef.current) {
+      // Use requestAnimationFrame for better timing
+      requestAnimationFrame(() => {
+        if (scrollAreaRef.current) {
+          scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight;
+        }
+      });
     }
   }, [lines]);
 
   const addLine = (type: TerminalLine['type'], content: string) => {
     setLines(prev => [...prev, { type, content }]);
+    
+    // Force scroll to bottom after adding line
+    setTimeout(() => {
+      scrollToBottom();
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    }, 10);
   };
 
-  const executeCommand = (command: string) => {
+  const executeLinuxCommand = async (command: string) => {
+    try {
+      const response = await fetch('/api/terminal', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ command }),
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        // Split output into lines and add each line
+        const outputLines = result.output.split('\n');
+        outputLines.forEach((line, index) => {
+          setLines(prev => [...prev, { type: 'output', content: line || '\u00A0' }]);
+        });
+        // Force scroll after all lines are added
+        setTimeout(() => {
+          scrollToBottom();
+        }, 20);
+      } else {
+        setLines(prev => [...prev, { type: 'error', content: result.error || 'Command execution failed' }]);
+        if (result.output) {
+          const outputLines = result.output.split('\n');
+          outputLines.forEach(line => {
+            setLines(prev => [...prev, { type: 'output', content: line || '\u00A0' }]);
+          });
+        }
+        // Force scroll after all lines are added
+        setTimeout(() => {
+          scrollToBottom();
+        }, 20);
+      }
+    } catch (error) {
+      addLine('error', 'Failed to execute command: Network error');
+    }
+  };
+
+  const executeCommand = async (command: string) => {
     const cmd = command.trim().toLowerCase();
+    const originalCommand = command.trim();
     
     // Add command to history
-    if (cmd && !commandHistory.includes(cmd)) {
-      setCommandHistory(prev => [...prev, cmd]);
+    if (originalCommand && !commandHistory.includes(originalCommand)) {
+      setCommandHistory(prev => [...prev, originalCommand]);
     }
     
     // Add input line
-    addLine('input', `$ ${command}`);
+    addLine('input', `$ ${originalCommand}`);
     
+    // Handle built-in commands first
     switch (cmd) {
       case 'help':
-        addLine('output', 'Available commands:');
+        addLine('output', 'Built-in commands:');
         addLine('output', '  help     - Show this help message');
         addLine('output', '  about    - Learn about Haru');
         addLine('output', '  projects - View my projects');
         addLine('output', '  blogs    - View blog status');
         addLine('output', '  clear    - Clear the terminal');
         addLine('output', '  exit     - Close terminal');
+        addLine('output', '');
+        addLine('output', 'Linux commands:');
+        addLine('output', '  ls, pwd, whoami, date, uptime, cat, grep, etc.');
+        addLine('output', '  (Safe commands only - destructive commands are blocked)');
         break;
         
       case 'about':
@@ -123,12 +202,17 @@ const Terminal: React.FC<TerminalProps> = ({ onClose }) => {
         break;
         
       default:
-        addLine('error', `Command not found: ${command}`);
-        addLine('output', 'Type "help" to see available commands.');
+        // If it's not a built-in command, try to execute it as a Linux command
+        await executeLinuxCommand(originalCommand);
         break;
     }
     
     addLine('output', '');
+    
+    // Final scroll to bottom after command execution
+    setTimeout(() => {
+      scrollToBottom();
+    }, 30);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -160,8 +244,17 @@ const Terminal: React.FC<TerminalProps> = ({ onClose }) => {
     }
   };
 
+  const handleTerminalClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-black text-green-400 flex flex-col">
+    <div 
+      className="min-h-screen bg-black text-green-400 flex flex-col"
+      onClick={handleTerminalClick}
+    >
       {/* Terminal Header */}
       <div className="flex items-center justify-between p-2 border-b border-green-400/30">
         <div className={cn("text-sm", monoFont.className)}>
@@ -179,32 +272,42 @@ const Terminal: React.FC<TerminalProps> = ({ onClose }) => {
       {/* Terminal Content */}
       <div
         ref={terminalRef}
-        className="flex-1 p-4 overflow-y-auto font-mono text-sm leading-relaxed"
+        className="flex-1 flex flex-col overflow-hidden"
       >
-        {lines.map((line, index) => (
-          <div key={index} className={cn(
-            monoFont.className,
-            line.type === 'input' && 'text-white',
-            line.type === 'output' && 'text-green-400',
-            line.type === 'error' && 'text-red-400'
-          )}>
-            {line.content || '\u00A0'}
-          </div>
-        ))}
+        {/* Scrollable Content Area */}
+        <div 
+          ref={scrollAreaRef}
+          className="flex-1 overflow-y-auto p-4 font-mono text-sm leading-relaxed"
+        >
+          {lines.map((line, index) => (
+            <div key={index} className={cn(
+              monoFont.className,
+              line.type === 'input' && 'text-white',
+              line.type === 'output' && 'text-green-400',
+              line.type === 'error' && 'text-red-400'
+            )}>
+              {line.content || '\u00A0'}
+            </div>
+          ))}
+          {/* Spacer to push input to bottom */}
+          <div className="h-4"></div>
+        </div>
         
-        {/* Current Input Line */}
-        <div className={cn("flex items-center", monoFont.className)}>
-          <span className="text-white mr-2">$</span>
-          <input
-            ref={inputRef}
-            type="text"
-            value={currentInput}
-            onChange={(e) => setCurrentInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            className="flex-1 bg-transparent text-white outline-none caret-green-400"
-            autoComplete="off"
-            spellCheck="false"
-          />
+        {/* Fixed Input Line at Bottom */}
+        <div className="border-t border-green-400/30 p-4 bg-black">
+          <div className={cn("flex items-center", monoFont.className)}>
+            <span className="text-white mr-2">$</span>
+            <input
+              ref={inputRef}
+              type="text"
+              value={currentInput}
+              onChange={(e) => setCurrentInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="flex-1 bg-transparent text-white outline-none caret-green-400"
+              autoComplete="off"
+              spellCheck="false"
+            />
+          </div>
         </div>
       </div>
     </div>
