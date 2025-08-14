@@ -6,6 +6,7 @@ export const notes: NotesTypes[] = [
         title: "DSA/CP notes",
         description: "A collection of Algorithims for solving DSA/CP questions.",
         lastUpdated: "January 29, 2025",
+        slug: "DSA-CP",
         href: "/notes/DSA/CP"
     },
     {
@@ -13,6 +14,7 @@ export const notes: NotesTypes[] = [
         title: "AI/ML notes",
         description: "Everrythng related to AI/ML.",
         lastUpdated: "January 29, 2025",
+        slug: "AI-ML",
         href: "/notes/AI/ML"
     },
     {
@@ -20,6 +22,7 @@ export const notes: NotesTypes[] = [
         title: "Books",
         description: "AI, Math and coding Book Summeries, will have their important concepts in here for quick reference.",
         lastUpdated: "January 29, 2025",
+        slug: "books",
         href: "/notes/books"
     }
 ] 

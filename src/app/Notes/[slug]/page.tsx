@@ -59,7 +59,24 @@ export default async function Reference({
         notFound()
     }
 
-    // Import and render the actual blog post component
-    const PostComponent = (await import(`../${slug}/page`)).default
-    return <PostComponent />
+    // Try to import the actual blog post component, fallback to placeholder
+    try {
+        const PostComponent = (await import(`../${slug}/page`)).default
+        return <PostComponent />
+    } catch {
+        // If the specific note page doesn't exist, show a placeholder
+        return (
+            <div className="max-w-4xl mx-auto p-6">
+                <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
+                <p className="text-muted-foreground mb-4">{post.description}</p>
+                <p className="text-sm text-muted-foreground mb-8">Last updated: {post.lastUpdated}</p>
+                
+                <div className="bg-muted/50 border border-dashed border-muted-foreground/20 rounded-lg p-8 text-center">
+                    <h2 className="text-xl font-semibold mb-2">Coming Soon</h2>
+                    <p className="text-muted-foreground">This note section is currently under construction.</p>
+                    <p className="text-muted-foreground mt-2">Check back later for detailed content!</p>
+                </div>
+            </div>
+        )
+    }
 }
