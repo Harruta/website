@@ -82,11 +82,11 @@ export async function POST(request: NextRequest) {
         success: true
       });
       
-    } catch (execError: any) {
+    } catch (execError: unknown) {
       // Handle command execution errors
-      const errorMessage = execError.message || 'Command execution failed';
-      const output = execError.stdout || '';
-      const stderr = execError.stderr || '';
+      const errorMessage = execError instanceof Error ? execError.message : 'Command execution failed';
+      const output = (execError as { stdout?: string }).stdout || '';
+      const stderr = (execError as { stderr?: string }).stderr || '';
       
       return NextResponse.json({
         output: output + (stderr ? `\nERROR:\n${stderr}` : ''),

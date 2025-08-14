@@ -90,7 +90,7 @@ const Terminal: React.FC<TerminalProps> = ({ onClose }) => {
       if (result.success) {
         // Split output into lines and add each line
         const outputLines = result.output.split('\n');
-        outputLines.forEach((line, index) => {
+        outputLines.forEach((line: string) => {
           setLines(prev => [...prev, { type: 'output', content: line || '\u00A0' }]);
         });
         // Force scroll after all lines are added
@@ -101,7 +101,7 @@ const Terminal: React.FC<TerminalProps> = ({ onClose }) => {
         setLines(prev => [...prev, { type: 'error', content: result.error || 'Command execution failed' }]);
         if (result.output) {
           const outputLines = result.output.split('\n');
-          outputLines.forEach(line => {
+          outputLines.forEach((line: string) => {
             setLines(prev => [...prev, { type: 'output', content: line || '\u00A0' }]);
           });
         }
@@ -110,7 +110,7 @@ const Terminal: React.FC<TerminalProps> = ({ onClose }) => {
           scrollToBottom();
         }, 20);
       }
-    } catch (error) {
+    } catch {
       addLine('error', 'Failed to execute command: Network error');
     }
   };
