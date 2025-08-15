@@ -24,7 +24,7 @@ const Hero = () => {
       {/* Social Icons */}
       <div className="flex space-x-4">
         <a 
-          href="https://x.com/codebyharu" 
+          href="https://x.com/kawkoiharu" 
           target="_blank" 
           rel="noopener noreferrer" 
           className="text-gray-600 dark:text-gray-400 hover:text-blue-500 transition-all duration-300 hover:-translate-y-1"
