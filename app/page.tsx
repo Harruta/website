@@ -26,7 +26,7 @@ export default function Home() {
       <div className="relative z-10 flex items-center justify-center min-h-screen">
         <div className="text-center text-white">
           <h1 className="text-4xl font-bold mb-4">Site Under Construction</h1>
-          <p className="text-lg">Please visit sometime later</p>
+          <p className="text-lg">please visit sometime later</p>
         </div>
       </div>
     </div>
